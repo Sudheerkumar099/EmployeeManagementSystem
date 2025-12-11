@@ -1,9 +1,10 @@
 public class WageCalculator {
-    private final int wagePerHour=20 ;
-    private int hoursPerDay=8;
+    private static final int wagePerHour=20 ;
+    private static int hoursPerDay=8;
+    private static int partTimeHours=4;
 
-    public void dailyWageByAttendance(Employee e){
-        if(Attendance.isEmployeePresent(e)==0) {
+    public static void dailyWageByAttendance(Employee e){
+        if(Attendance.isEmployeePresent(e).equalsIgnoreCase("Absent")) {
             System.out.println("Employee :" + e.getName());
             System.out.println("Attendance : Absent");
             hoursPerDay=0;
@@ -11,13 +12,19 @@ public class WageCalculator {
             System.out.println("Wage Per Hour :"+ wagePerHour);
             System.out.println("Daily wage: "+ wagePerHour*hoursPerDay);
         }
-        else {
+        else if(Attendance.isEmployeePresent(e).equalsIgnoreCase("Full-Time")){
             System.out.println("Employee :" + e.getName());
-            System.out.println("Attendance : Present");
+            System.out.println("Attendance : Full-Time");
             System.out.println("Hours Worked : "+hoursPerDay);
             System.out.println("Wage Per Hour :"+ wagePerHour);
             System.out.println("Daily wage: "+ wagePerHour*hoursPerDay);
         }
-
+        else {
+            System.out.println("Employee :" + e.getName());
+            System.out.println("Attendance : Part-Time");
+            System.out.println("Hours Worked : "+hoursPerDay);
+            System.out.println("Wage Per Hour :"+ wagePerHour);
+            System.out.println("Daily wage: "+ wagePerHour*partTimeHours);
+        }
     }
 }

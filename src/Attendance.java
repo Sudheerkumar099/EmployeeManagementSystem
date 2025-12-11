@@ -4,16 +4,23 @@ public class Attendance {
     private int attendance;
     private static Random random = new Random();
 
-    public static int isEmployeePresent(Employee e){
+    public static String isEmployeePresent(Employee e){
         int employee=e.getId();
-        int temp = random.nextInt(2);
-       if(temp==1){
-           System.out.println(e.getName()+" is Present");
-       }
-       else {
-           System.out.println(e.getName()+" is Absent");
-       }
-       return temp;
+        String status="";
+        int temp = random.nextInt(3);
+        switch (temp) {
+            case 0:
+                status="Absent";
+                break;
+                case 1:
+            status = "Full-Time";
+            break;
+
+            default:
+                status="Part-Time";
+        }
+
+       return status;
     }
 
 }
