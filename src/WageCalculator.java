@@ -38,7 +38,7 @@ public class WageCalculator {
         int hoursWorked=0;
         System.out.println("Employee Name :"+e.getName());
 
-        for(int day=1;day<20;day++){
+        for(int day=1;day<=20;day++){
             String status= Attendance.isEmployeePresent(e);
             if(status.equalsIgnoreCase("Full-Time")){
                 hoursWorked=8;
@@ -55,5 +55,33 @@ public class WageCalculator {
         }
         System.out.println("Total Monthly Wage is "+monthlyWage);
 
+    }
+
+
+    public static void computeTill(Employee e){
+        int total_Working_Days=20;
+        int totalWage=0;
+        int hoursWorked=0;
+        int maxHours=100;
+        int totalHoursWorked=0;
+        System.out.println("Employee Name :"+e.getName());
+
+        for(int day=1;day<=20 && totalHoursWorked<=maxHours;day++){
+            String status= Attendance.isEmployeePresent(e);
+            if(status.equalsIgnoreCase("Full-Time")){
+                hoursWorked=8;
+            }
+            else if(status.equalsIgnoreCase("Absent")){
+                hoursWorked=0;
+            } else  {
+                hoursWorked=4;
+            }
+            int dailywage= hoursWorked*wagePerHour;
+            totalWage+=dailywage;
+            totalHoursWorked+=hoursWorked;
+            System.out.println("Day : "+day+" Hours Worked :"+hoursWorked+" Today's Wage :"+dailywage+ " Total Till Now : "+totalWage);
+            System.out.println("____________________________________________________________________________________________________________");
+        }
+        System.out.println("Total Monthly Wage is "+totalWage +" and total hours worked is "+totalHoursWorked+" Hours");
     }
 }
