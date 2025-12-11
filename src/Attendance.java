@@ -2,9 +2,9 @@ import java.util.*;
 
 public class Attendance {
     private int attendance;
-    private Random random = new Random();
+    private static Random random = new Random();
 
-    public void isEmployeePresent(Employee e){
+    public static int isEmployeePresent(Employee e){
         int employee=e.getId();
         int temp = random.nextInt(2);
        if(temp==1){
@@ -12,8 +12,8 @@ public class Attendance {
        }
        else {
            System.out.println(e.getName()+" is Absent");
-
        }
+       return temp;
     }
 
 }
