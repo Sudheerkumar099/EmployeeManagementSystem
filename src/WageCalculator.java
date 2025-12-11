@@ -26,5 +26,34 @@ public class WageCalculator {
             System.out.println("Wage Per Hour :"+ wagePerHour);
             System.out.println("Daily wage: "+ wagePerHour*partTimeHours);
         }
+
+    }
+
+
+
+    //monthly Wage Calculation
+    public static void monthlyWages(Employee e){
+        int total_Working_Days=20;
+        int monthlyWage=0;
+        int hoursWorked=0;
+        System.out.println("Employee Name :"+e.getName());
+
+        for(int day=1;day<20;day++){
+            String status= Attendance.isEmployeePresent(e);
+            if(status.equalsIgnoreCase("Full-Time")){
+                hoursWorked=8;
+            }
+            else if(status.equalsIgnoreCase("Absent")){
+                hoursWorked=0;
+            } else  {
+                hoursWorked=4;
+            }
+            int dailywage= hoursWorked*wagePerHour;
+            monthlyWage+=dailywage;
+            System.out.println("Day : "+day+" Hours Worked :"+hoursWorked+" Today's Wage :"+dailywage+ " Total Till Now : "+monthlyWage);
+            System.out.println("____________________________________________________________________________________________________________");
+        }
+        System.out.println("Total Monthly Wage is "+monthlyWage);
+
     }
 }

@@ -5,7 +5,8 @@ public class Main {
     public static void main(String[] args) {
 
 Employee e= new Employee("sudheer",142);
-        System.out.println(Attendance.isEmployeePresent(e));
-      WageCalculator.dailyWageByAttendance(e);
+//        System.out.println(Attendance.isEmployeePresent(e));
+//      WageCalculator.dailyWageByAttendance(e);
+        WageCalculator.monthlyWages(e);
     }
 }
