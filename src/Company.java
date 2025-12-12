@@ -5,6 +5,9 @@ private  String companyName;
 private int wagePerHour;
 private  int workingDays;
 private int WorkingHours;
+private int totalWage;
+
+public final List<Integer> dailyWages = new ArrayList<Integer>();
 
     public Company(String companyName, int wagePerHour, int workingDays, int WorkingHours) {
        this.companyName = companyName;
@@ -29,6 +32,14 @@ private int WorkingHours;
         return WorkingHours;
     }
 
+    public int getTotalWage() {
+        return totalWage;
+    }
+
+    public void setTotalWage(int totalWage) {
+        this.totalWage = totalWage;
+    }
+
     @Override
     public String toString() {
         return "Company{" +
@@ -36,10 +47,11 @@ private int WorkingHours;
                 ", wagePerHour=" + wagePerHour +
                 ", workingDays=" + workingDays +
                 ", WorkingHours=" + WorkingHours +
+                ", totalWage=" + totalWage +
                 '}';
     }
 
-    public  static int ComputeWageForCompany( String companyName,int wagePerHour, int workingDays, int workingHours ){
+    public  static int ComputeWageForCompany(String companyName, int wagePerHour, int workingDays, int workingHours ){
 
         Random random  = new Random();
         int totalHours = 0;
@@ -71,4 +83,18 @@ private int WorkingHours;
         System.out.println("Total wage for the Company "+companyName +" is "+totalWage);
       return totalWage;
     }
+
+    public void addDailyWage(int w){
+        dailyWages.add(w);
+    }
+
+
+
+
+
+
+
 }
+
+
+

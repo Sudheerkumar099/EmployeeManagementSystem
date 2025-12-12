@@ -10,8 +10,12 @@ public class Main {
 //        Employee.computeTill(e);
 //        System.out.println(Employee.isEmployeePresent(e));
 
-        Company.ComputeWageForCompany("BrigdeLabz",20,20,100);
-        Company.ComputeWageForCompany("Tap",30,23,200);
+       Company c1 = new Company("BrigdeLabz",20,20,100);
+        Company c2= new Company("Tap",30,23,200);
+        EmpWageBuilder e1= new EmpWageBuilder(c1);
+        EmpWageBuilder e2= new EmpWageBuilder(c2);
+        e2.totalWageForCompany();
+
 
 
 
