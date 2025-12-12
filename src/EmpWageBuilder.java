@@ -11,6 +11,15 @@ public class EmpWageBuilder implements IComputeEmpWage{
      private List<CompanyEmpWage> companies;
      private int companyCount;
 
+    public int getTotalWageByCompany(String companyName) {
+        for (CompanyEmpWage c : companies) {
+            if (c.getCompanyName().equalsIgnoreCase(companyName)) {
+                return c.getTotalWage();
+            }
+        }
+        return -1;  // company not found
+    }
+
     public CompanyEmpWage getCompanyEmpWage(String companyName) {
         for (CompanyEmpWage c : companies) {
             if (c.getCompanyName().equalsIgnoreCase(companyName)) {
@@ -75,6 +84,7 @@ public class EmpWageBuilder implements IComputeEmpWage{
     // for calculating all company employee wages present
     public void computeEmpwages(){
          for(CompanyEmpWage c:companies){
+
              totalWageForCompany(c);
          }
     }
