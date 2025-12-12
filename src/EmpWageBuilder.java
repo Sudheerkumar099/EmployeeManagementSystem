@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class EmpWageBuilder {
+public class EmpWageBuilder implements IComputeEmpWage{
     private static final int partTime=4;
      private static final int fullTime=4;
      private Company company;
