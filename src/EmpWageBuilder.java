@@ -84,7 +84,7 @@ public class EmpWageBuilder implements IComputeEmpWage{
     // for calculating all company employee wages present
     public void computeEmpwages(){
          for(CompanyEmpWage c:companies){
-
+if(c.getCompanyName().equalsIgnoreCase(Main.company))
              totalWageForCompany(c);
          }
     }
