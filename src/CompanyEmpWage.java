@@ -56,4 +56,15 @@ public class CompanyEmpWage {
                 ", totalWage=" + totalWage +
                 '}';
     }
+
+
+    public List<DailyRecord> dailyRecords = new ArrayList<>();
+    public void addDailyRecord(DailyRecord r){
+        dailyRecords.add(r);
+    }
+
+    public List<DailyRecord> getDailyRecords(){
+        return new ArrayList<>(dailyRecords);
+    }
+
 }

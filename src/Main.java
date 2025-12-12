@@ -7,5 +7,20 @@ public class Main {
         emp.printAllCompanies();
 
 
+
+
+
+        CompanyEmpWage comp = emp.getCompanyEmpWage("BridgeLabz");
+        if (comp != null) {
+            System.out.println("\nDaily Records for " + "BridgeLabz" + ":");
+            for (DailyRecord dr : comp.getDailyRecords()) {
+                System.out.println(dr);
+            }
+        } else {
+            System.out.println("Company not found!");
+        }
+
+
+
     }
 }

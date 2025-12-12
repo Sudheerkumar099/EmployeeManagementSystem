@@ -11,6 +11,14 @@ public class EmpWageBuilder implements IComputeEmpWage{
      private List<CompanyEmpWage> companies;
      private int companyCount;
 
+    public CompanyEmpWage getCompanyEmpWage(String companyName) {
+        for (CompanyEmpWage c : companies) {
+            if (c.getCompanyName().equalsIgnoreCase(companyName)) {
+                return c;
+            }
+        }
+        return null;
+    }
 
 
      public EmpWageBuilder(Company company,Random random){
@@ -51,6 +59,7 @@ public class EmpWageBuilder implements IComputeEmpWage{
             int dailywage = hoursWorked * company.getWagePerHour();
             totalHours += hoursWorked;
             totalWage += dailywage;
+            company.addDailyRecord(new DailyRecord(totalDays,totalHours,dailywage));
             System.out.println("Hours Worked: " + hoursWorked + "| Daily wage " + dailywage + " |Total Hours:" + totalHours + " |Total Wage till Now :" + totalWage);
         }
         System.out.println("Total wage for the Company " + company.getCompanyName() + " is " + totalWage);
