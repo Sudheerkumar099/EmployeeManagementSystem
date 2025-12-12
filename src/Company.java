@@ -88,6 +88,9 @@ public static final  List<Integer> dailyWages = new ArrayList<Integer>();
         dailyWages.add(w);
     }
 
+    public List<Integer> getDailyWages(){return new ArrayList<>();
+    }
+
 
 
 

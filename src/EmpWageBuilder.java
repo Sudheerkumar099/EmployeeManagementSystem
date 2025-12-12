@@ -1,12 +1,17 @@
-import jdk.internal.dynalink.beans.StaticClass;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class EmpWageBuilder {
     private static final int partTime=4;
      private static final int fullTime=4;
      private Company company;
-     private Random random;
+     private Random random= new Random();
+     private CompanyEmpWage[] companies;
+     private int companyCount;
+
+
+
      public EmpWageBuilder(Company company,Random random){
          this.company=company;
          this.random=random;
@@ -16,14 +21,15 @@ public class EmpWageBuilder {
          this(company,new Random());
      }
 
-    public EmpWageBuilder() {
+    public EmpWageBuilder(int numOfCompanies) {
+         companies = new CompanyEmpWage[numOfCompanies];
     }
 
-    public int totalWageForCompany() {
+    public int totalWageForCompany(CompanyEmpWage company) {
         int totalHours = 0;
         int totalDays = 0;
         int totalWage = 0;
-        System.out.println("Computig the total Wages for the Company " + company.getCompanyName());
+        System.out.println("Computing the total Wages for the Company " + company.getCompanyName());
 
         while (totalHours < company.getWorkingHours() && totalDays < company.getWorkingDays()) {
             totalDays++;
@@ -47,8 +53,28 @@ public class EmpWageBuilder {
         }
         System.out.println("Total wage for the Company " + company.getCompanyName() + " is " + totalWage);
         company.setTotalWage(totalWage);
-        company.addDailyWage(totalWage);
+
         return totalWage;
+    }
+
+    public void addCompany(String name,int wagePerhour,int workingDays, int workingHours){
+         companies[companyCount++]=new CompanyEmpWage(name,wagePerhour,workingHours,workingDays);
+    }
+
+    // for calculating all company employee wages present
+    public void computeEmpwages(){
+         for(int i=0;i<companyCount;i++){
+             totalWageForCompany(companies[i]);
+         }
+    }
+
+    public void printAllCompanies(){
+        System.out.println("All companies list");
+        for(int i =0;i<companyCount;i++){
+            CompanyEmpWage c=companies[i];
+            System.out.println(c);
+
+        }
     }
 
 
