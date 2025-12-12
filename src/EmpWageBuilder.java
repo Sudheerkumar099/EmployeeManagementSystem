@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class EmpWageBuilder {
@@ -7,7 +8,7 @@ public class EmpWageBuilder {
      private static final int fullTime=4;
      private Company company;
      private Random random= new Random();
-     private CompanyEmpWage[] companies;
+     private List<CompanyEmpWage> companies;
      private int companyCount;
 
 
@@ -21,8 +22,9 @@ public class EmpWageBuilder {
          this(company,new Random());
      }
 
-    public EmpWageBuilder(int numOfCompanies) {
-         companies = new CompanyEmpWage[numOfCompanies];
+    public EmpWageBuilder() {
+         companies = new ArrayList<>();
+         random=new Random();
     }
 
     public int totalWageForCompany(CompanyEmpWage company) {
@@ -58,20 +60,19 @@ public class EmpWageBuilder {
     }
 
     public void addCompany(String name,int wagePerhour,int workingDays, int workingHours){
-         companies[companyCount++]=new CompanyEmpWage(name,wagePerhour,workingHours,workingDays);
+         companies.add(new CompanyEmpWage(name,wagePerhour,workingHours,workingDays));
     }
 
     // for calculating all company employee wages present
     public void computeEmpwages(){
-         for(int i=0;i<companyCount;i++){
-             totalWageForCompany(companies[i]);
+         for(CompanyEmpWage c:companies){
+             totalWageForCompany(c);
          }
     }
 
     public void printAllCompanies(){
         System.out.println("All companies list");
-        for(int i =0;i<companyCount;i++){
-            CompanyEmpWage c=companies[i];
+        for(CompanyEmpWage c:companies.toArray(new CompanyEmpWage[0])){
             System.out.println(c);
 
         }
