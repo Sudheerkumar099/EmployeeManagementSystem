@@ -46,6 +46,7 @@ public class EmpWageBuilder {
         }
         System.out.println("Total wage for the Company "+company.getCompanyName() +" is "+totalWage);
         company.setTotalWage(totalWage);
+        company.addDailyWage(totalWage);
         return totalWage;
     }
 

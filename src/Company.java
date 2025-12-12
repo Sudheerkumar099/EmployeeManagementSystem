@@ -7,7 +7,7 @@ private  int workingDays;
 private int WorkingHours;
 private int totalWage;
 
-public final List<Integer> dailyWages = new ArrayList<Integer>();
+public static final  List<Integer> dailyWages = new ArrayList<Integer>();
 
     public Company(String companyName, int wagePerHour, int workingDays, int WorkingHours) {
        this.companyName = companyName;
